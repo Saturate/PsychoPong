@@ -5,12 +5,19 @@
 <body>
   <script type="text/javascript">
     // Start Socket
-    var socket = io.connect('http://localhost/board');
+    var socket = io.connect('http://localhost/cio');
 
     socket.on('connect', function () {
       
       while (1) {
-        socket.emit('l', 'l');
+        for (var i=0; i<10000; i++) {
+          socket.emit('l', 'l');
+          console.log('send l');
+        }
+        for (var i=0; i<10000; i++) {
+          socket.emit('r', 'r');
+          console.log('send r');
+        }
       }
 
     });

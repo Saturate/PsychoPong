@@ -27,10 +27,11 @@ var controller = io
   .of('/cio')
   .on('connection', function (socket) {
     socket.emit('status', { status: 'connected' });
+    console.log(board);
     socket.on('l', function (data) {
-      board.socket.emit('l', 'l');
+      board.sockets.emit('l', 'l');
     });
     socket.on('r', function (data) {
-      board.socket.emit('r', 'r');
+      board.sockets.emit('r', 'r');
     });
   });
