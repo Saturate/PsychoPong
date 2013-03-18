@@ -13,3 +13,7 @@ app.get('/board/', function (req, res) {
   res.sendfile(__dirname + '/static/board.html');
 });
 
+app.get('/js/board.js', function (req, res) {
+  res.sendfile(__dirname + '/static/js/board.js');
+});
+
