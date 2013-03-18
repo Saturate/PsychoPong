@@ -21,6 +21,10 @@
 	</style>
 </head>
 <body>
+
+	<audio id="soundStart" src="/sounds/start.mp3"></audio>
+
+
 	<h1>PsychoPong!</h1>
 	<script type="text/javascript">
 
@@ -35,6 +39,8 @@
 				console.log(msg);
 			});
 		});
+
+		document.getElementById('soundStart').play();
 
 		// Make game board!
 		Crafty.init(600, 300);
@@ -82,9 +88,11 @@
 		//Score boards
 		Crafty.e("LeftPoints, DOM, 2D, Text")
 			.attr({ x: 20, y: 20, w: 100, h: 20, points: 0 })
+			.textColor('#FFFFFF')
 			.text("0 Points");
 		Crafty.e("RightPoints, DOM, 2D, Text")
 			.attr({ x: 515, y: 20, w: 100, h: 20, points: 0 })
+			.textColor('#FFFFFF')
 			.text("0 Points");
 	</script>
 </body>
