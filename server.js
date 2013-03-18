@@ -17,3 +17,20 @@ app.get('/js/board.js', function (req, res) {
   res.sendfile(__dirname + '/static/js/board.js');
 });
 
+var board = io
+  .of('board')
+  .on('connection', function (socket) {
+    socket.emit('news', { status: 'Board connected' });
+  });
+
+var controller = io
+  .of('control')
+  .on('connection', function (socket) {
+    socket.emit('status', { status: 'connected' });
+    socket.on('l', function (data) {
+      board.socket.emit('l', 'l');
+    });
+    socket.on('r', function (data) {
+      board.socket.emit('r', 'r');
+    });
+  });
