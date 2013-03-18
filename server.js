@@ -29,9 +29,11 @@ var controller = io
     socket.emit('status', { status: 'connected' });
     console.log(board);
     socket.on('l', function (data) {
-      board.sockets.emit('l', 'l');
+      board.emit('dir', 'l');
+      console.log('l');
     });
     socket.on('r', function (data) {
-      board.sockets.emit('r', 'r');
+      board.emit('dir', 'r');
+      console.log('r');
     });
   });

@@ -32,9 +32,8 @@
 		var socket = io.connect('http://localhost/bio');
 
 		socket.on('connect', function () {
-			socket.send('I am board');
 
-			socket.on('message', function (msg) {
+			socket.on('dir', function (msg) {
 			  // my msg
 				console.log(msg);
 			});
