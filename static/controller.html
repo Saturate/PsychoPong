@@ -1,5 +1,7 @@
 <html>
-
+<head>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
 <body>
   <script type="text/javascript">
     // Start Socket
@@ -10,7 +12,7 @@
       while (1) {
         socket.emit('l', 'l');
       }
-      
+
     });
   </script>
 
