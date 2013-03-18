@@ -17,6 +17,11 @@ app.get('/js/board.js', function (req, res) {
   res.sendfile(__dirname + '/static/js/board.js');
 });
 
+app.get('/sounds/start.mp3', function (req, res) {
+  res.sendfile(__dirname + '/static/sound/start.mp3');
+});
+
+
 var board = io
   .of('/bio')
   .on('connection', function (socket) {
