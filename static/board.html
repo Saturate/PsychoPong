@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 
 		// Start Socket
-		var socket = io.connect('http://localhost');
+		var socket = io.connect('http://localhost/board');
 
 		socket.on('connect', function () {
 			socket.send('I am board');

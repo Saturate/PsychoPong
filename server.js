@@ -18,13 +18,13 @@ app.get('/js/board.js', function (req, res) {
 });
 
 var board = io
-  .of('board')
+  .of('/bio')
   .on('connection', function (socket) {
     socket.emit('news', { status: 'Board connected' });
   });
 
 var controller = io
-  .of('control')
+  .of('/cio')
   .on('connection', function (socket) {
     socket.emit('status', { status: 'connected' });
     socket.on('l', function (data) {

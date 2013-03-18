@@ -1,5 +1,17 @@
 <html>
 
-The controller
+<body>
+  <script type="text/javascript">
+    // Start Socket
+    var socket = io.connect('http://localhost/board');
+
+    socket.on('connect', function () {
+      
+      while (1) {
+        socket.emit('l', 'l');
+      }
+      
+    });
+  </script>
 
 </html>
