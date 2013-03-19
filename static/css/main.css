@@ -16,4 +16,9 @@ h1 {
 	color: grey;
 	display: block;
 	padding: 10px;
+	text-decoration: none;
+	font-size: 8px;
+}
+#fullscreen:hover {
+	text-decoration: underline;
 }
