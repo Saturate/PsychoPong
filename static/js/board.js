@@ -138,4 +138,4 @@ window.onload = function() {
 
 	// init the game
 	Crafty.scene("loading");
-}
+};
