@@ -3,10 +3,13 @@ var socket = io.connect('http://localhost/bio');
 
 socket.on('connect', function () {
 	console.log('Board Connected...');
-	socket.on('move', function (data) {
-		console.log('Player: ' + data.player + ', moved: ' + data.dir);
-	});
+	socket.emit('Board Connected', { client: 'data' });
 });
+
+socket.on('Controller Added', function () {
+	console.log('Controller Added...');
+});
+
 
 function launchFullScreen(element) {
 	if(element.requestFullScreen) {
@@ -19,6 +22,11 @@ function launchFullScreen(element) {
 }
 
 window.onload = function() {
+
+	$('#fullscreen').on('click', function(e) {
+		e.preventDefault();
+		launchFullScreen(document.documentElement);
+	});
 
 	// Options/Settings
 	var opt = {
@@ -95,14 +103,31 @@ window.onload = function() {
 	Crafty.scene("main", function() {
 
 		//Paddles
-		Crafty.e("Paddle, 2D, DOM, Color, Multiway")
+		var paddleLeft = Crafty.e("Paddle, 2D, DOM, Color, Multiway")
 			.color('rgb(255,255,255)')
 			.attr({ x: 20, y: 100, w: 10, h: 100 })
 			.multiway(4, { W: -90, S: 90 });
-		Crafty.e("Paddle, 2D, DOM, Color, Multiway")
+		var paddleRight = Crafty.e("Paddle, 2D, DOM, Color, Multiway")
 			.color('rgb(255,255,255)')
 			.attr({ x: 580, y: 100, w: 10, h: 100 })
 			.multiway(4, { UP_ARROW: -90, DOWN_ARROW: 90 });
+
+
+		paddleLeft.bind("move", function(e) {
+			console.log('left move', e);
+			this.move(e.dir, e.distance);
+		});
+
+		paddleRight.bind("move", function() {
+			console.log('right move', e);
+			this.move(e.dir, e.distance);
+		});
+
+		socket.on('move', function (e) {
+			console.log('Move event from socket!', e);
+			paddleLeft.trigger("move", { distance: 15, dir: e.dir });
+		});
+
 
 		//Ball
 		Crafty.e("2D, DOM, Color, Collision")

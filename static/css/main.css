@@ -1,5 +1,6 @@
-body {
+html {
 	background: black;
+	color: #fff;
 }
 #cr-stage {
 	margin: 0 auto;
