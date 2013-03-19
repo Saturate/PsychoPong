@@ -38,17 +38,24 @@ var board = io
     socket.emit('news', { status: 'Board connected' });
   });
 
-var controller = io
-  .of('/cio')
+var controller1 = io
+  .of('/cio1')
   .on('connection', function (socket) {
     socket.emit('status', { status: 'connected' });
     console.log(board);
-    socket.on('l', function (data) {
-      board.emit('dir', 'l');
-      console.log('l');
+    socket.on('move', function (data) {
+      board.emit('move', { player: 1, dir: data.dir });
+      console.log('Player 1, move: ' + data.dir);
     });
-    socket.on('r', function (data) {
-      board.emit('dir', 'r');
-      console.log('r');
+  });
+
+var controller2 = io
+  .of('/cio2')
+  .on('connection', function (socket) {
+    socket.emit('status', { status: 'connected' });
+    console.log(board);
+    socket.on('move', function (data) {
+      board.emit('move', { player: 2, dir: data.dir });
+      console.log('Player 2, move: ' + data.dir);
     });
   });

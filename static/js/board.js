@@ -3,7 +3,9 @@ var socket = io.connect('http://localhost/bio');
 
 socket.on('connect', function () {
 	console.log('Board Connected...');
-	socket.emit('Board Connected', { client: 'data' });
+	socket.on('move', function (data) {
+		console.log('Player: ' + data.player + ', moved: ' + data.dir);
+	});
 });
 
 function launchFullScreen(element) {

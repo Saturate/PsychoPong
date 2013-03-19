@@ -1,5 +1,5 @@
 // Start Socket
-var socket = io.connect('http://localhost/cio');
+var socket = io.connect('http://localhost/cio1');
 
 socket.on('connect', function () {
 
@@ -8,6 +8,14 @@ socket.on('connect', function () {
 });
 
 $(function() {
+	$(document).keydown(function(evt){
+	  if (evt.which == 38) { // up
+        socket.emit('move', { dir: 'u' });
+	  } else if (evt.which == 40) { // down
+        socket.emit('move', { dir: 'd' });
+	  }
+      console.log('key pressed: ' + evt.which);
+    });
 
 	$('#up').on('click', function() {
 		socket.emit('move', { type: 'up', user: 'left' });
