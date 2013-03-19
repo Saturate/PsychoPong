@@ -1,0 +1,12 @@
+body {
+	background: black;
+}
+#cr-stage {
+	margin: 0 auto;
+	border: 1px dashed white;
+}
+h1 {
+	color: #fff;
+	font-family: verdana;
+	text-align: center;
+}

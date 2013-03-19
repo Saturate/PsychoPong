@@ -5,6 +5,8 @@ var io = require('socket.io').listen(server);
 server.listen(1337);
 console.log('Listening on port 1337');
 
+
+/* Rounting */
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/static/controller.html');
 });
@@ -17,11 +19,19 @@ app.get('/js/board.js', function (req, res) {
   res.sendfile(__dirname + '/static/js/board.js');
 });
 
+app.get('/js/controller.js', function (req, res) {
+  res.sendfile(__dirname + '/static/js/controller.js');
+});
+
 app.get('/sounds/start.mp3', function (req, res) {
   res.sendfile(__dirname + '/static/sound/start.mp3');
 });
 
+app.get('/css/main.css', function (req, res) {
+  res.sendfile(__dirname + '/static/css/main.css');
+});
 
+/* Socket.io Events */
 var board = io
   .of('/bio')
   .on('connection', function (socket) {

@@ -6,7 +6,15 @@ socket.on('connect', function () {
 	socket.emit('Board Connected', { client: 'data' });
 });
 
-
+function launchFullScreen(element) {
+	if(element.requestFullScreen) {
+		element.requestFullScreen();
+	} else if(element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+	} else if(element.webkitRequestFullScreen) {
+		element.webkitRequestFullScreen();
+	}
+}
 
 window.onload = function() {
 

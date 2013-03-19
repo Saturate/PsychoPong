@@ -1,26 +1,22 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <script src="/socket.io/socket.io.js"></script>
+	<title>PsychoPong!</title>
+
+	<link type="text/css" rel="stylesheet" href="/css/main.css" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://cdn.craftycomponents.com/crafty-release.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script src="/js/controller.js"></script>
 </head>
-<body>
-  <script type="text/javascript">
-    // Start Socket
-    var socket = io.connect('http://localhost/cio');
+<body id="controller">
 
-    socket.on('connect', function () {
-      
-      while (1) {
-        for (var i=0; i<10000; i++) {
-          socket.emit('l', 'l');
-          console.log('send l');
-        }
-        for (var i=0; i<10000; i++) {
-          socket.emit('r', 'r');
-          console.log('send r');
-        }
-      }
+	<div id="controller-arrows">
+		<button id="up">UP</button>
+		<button id="down">DOWN</button>		
+	</div>
 
-    });
-  </script>
-
+</body>
 </html>

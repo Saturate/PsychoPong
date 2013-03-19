@@ -1,28 +1,17 @@
 <!DOCTYPE html>
+<html>
 <head>
 	<title>PsychoPong!</title>
-	<script type="text/javascript" src="http://cdn.craftycomponents.com/crafty-release.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="/css/main.css" />
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://cdn.craftycomponents.com/crafty-release.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script src="/js/board.js"></script>
-
-	<style>
-		body {
-			background: black;
-		}
-		#cr-stage {
-			margin: 0 auto;
-			border: 1px dashed white;
-		}
-		h1 {
-			color: #fff;
-			font-family: verdana;
-			text-align: center;
-		}
-
-	</style>
 </head>
-<body id="body">
+<body id="board">
 	<h1>PsychoPong!</h1>
 	<!-- Game Stage -->
 	<div id="cr-stage"></div>
