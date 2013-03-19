@@ -42,6 +42,11 @@ var controller1 = io
   .of('/cio1')
   .on('connection', function (socket) {
     socket.emit('status', { status: 'connected' });
+
+
+    // send the clients id to the client itself.
+    socket.send(socket.id);
+
     console.log(board);
     socket.on('move', function (data) {
       board.emit('move', { player: 1, dir: data.dir });
