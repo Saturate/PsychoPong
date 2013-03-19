@@ -9,7 +9,7 @@ socket.on('connect', function () {
 
 // Game controller 
 var GC = {
-	sendMovement: function(e) {
+	sendMovement: function(input) {
 		socket.emit('move', { type: 'n', user: 'left' });
 	}
 }
@@ -17,21 +17,20 @@ var GC = {
 $(function() {
 	$(document).keydown(function(evt){
 	  if (evt.which == 38) { // up
-        socket.emit('move', { dir: 'n' });
+        GC.sendMovement( { dir: 'n' } } 
+
 	  } else if (evt.which == 40) { // down
-        socket.emit('move', { dir: 's' });
+        GC.sendMovement( { dir: 's' } } 
 	  }
       console.log('key pressed: ' + evt.which);
     });
 
 	$('#up').on('click', function() {
-		socket.emit('move', { dir: 'n', user: 'left' });
-		console.log('Move Up!');
+		GC.sendMovement( { dir: 'n' } } 
 	});
 
 	$('#down').on('click', function() {
-		socket.emit('move', { dir: 's', user: 'left' });
-		console.log('Move Down!');
+		GC.sendMovement( { dir: 's' } )
 	});
 
 });
