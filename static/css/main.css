@@ -1,13 +1,19 @@
 html {
+	font-family: 'Press Start 2P', verdana;
 	background: black;
 	color: #fff;
+	font-size: 9px;
 }
 #cr-stage {
 	margin: 0 auto;
 	border: 1px dashed white;
 }
 h1 {
-	color: #fff;
-	font-family: verdana;
 	text-align: center;
+}
+#fullscreen {
+	text-align: center;
+	color: grey;
+	display: block;
+	padding: 10px;
 }

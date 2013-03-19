@@ -79,9 +79,10 @@ window.onload = function() {
 	Crafty.scene("title", function() {
 
 		Crafty.e("StartMsg, DOM, 2D, Text")
-			.attr({ x: opt.width / 2, y: opt.height / 2, w: 100, h: 20, points: 0 })
+			.attr({ x: 0 , y: opt.height / 2, w: opt.width, h: 20, points: 1 })
+			.css("textAlign", "center")
 			.textColor('#FFFFFF')
-			.text("Waiting to start...");
+			.text("Press SPACE to start...");
 
 		socket.emit('Board Ready');
 
