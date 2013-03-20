@@ -1,5 +1,5 @@
 // Start Socket
-var socket = io.connect('http://localhost/cio1');
+var socket = io.connect('http://localhost/cio');
 
 socket.on('connect', function () {
 
