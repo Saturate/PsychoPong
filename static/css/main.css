@@ -58,3 +58,13 @@ button:active {
 	position:relative;
 	top:1px;
 }
+
+/*
+	Device Orientation
+*/
+#rotateMe {
+	background-color: red;
+	height: 50px;
+	width: 50px;
+	margin: 20px auto;
+}
