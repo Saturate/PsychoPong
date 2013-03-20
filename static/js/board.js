@@ -49,7 +49,7 @@ window.onload = function() {
 
 
 		// For some reason we need a png, does mp3 not work?
-		Crafty.load(["images/fixabug.png","/sounds/start.mp3"],
+		Crafty.load(["/img/title.png","/sound/start.mp3"],
 			function() {
 
 				console.log('Done loading...');
