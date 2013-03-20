@@ -3,8 +3,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-server.listen(1337);
-console.log('Listening on port 1337');
+server.listen(80);
+console.log('Listening on port 80');
 
 
 /* Rounting */
@@ -28,7 +28,7 @@ var controller = io
   .of('/cio')
   .on('connection', function (socket) {
     socket.emit('status', { status: 'connected' });
-    board.emit('playerConnected', { id: '1' });
+    board.emit('playerConnected', { id: socket.id });
 
 
     // send the clients id to the client itself.
@@ -36,7 +36,7 @@ var controller = io
 
     console.log(board);
     socket.on('move', function (data) {
-      board.emit('move', { player: 1, dir: data.dir });
+      board.emit('move', { id: socket.id, dir: data.dir });
       console.log('Player 1, move: ' + data.dir);
     });
   });
