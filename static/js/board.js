@@ -6,8 +6,8 @@ socket.on('connect', function () {
 	socket.emit('Board Connected', { client: 'data' });
 });
 
-socket.on('Controller Added', function () {
-	console.log('Controller Added...');
+socket.on('playerConnected', function (data) {
+	console.log('Player Connected.', data);
 });
 
 
