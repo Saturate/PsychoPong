@@ -1,3 +1,12 @@
+// Options/Settings
+var opt = {
+	width: 700,
+	height: 400
+};
+
+var players = [];
+
+
 // Start Socket
 var socket = io.connect('http://localhost/bio');
 
@@ -6,18 +15,25 @@ socket.on('connect', function () {
 	socket.emit('Board Connected', { client: 'data' });
 });
 
-socket.on('playerConnected', function (data) {
-	console.log('Player Connected.', data);
+socket.on('playerConnected', function (player) {
+	console.log('Player Connected.', player);
+	players.push(player.id);
 });
 
 
-function launchFullScreen(element) {
-	if(element.requestFullScreen) {
-		element.requestFullScreen();
-	} else if(element.mozRequestFullScreen) {
-		element.mozRequestFullScreen();
-	} else if(element.webkitRequestFullScreen) {
-		element.webkitRequestFullScreen();
+
+var Board = {
+	resolvePlayer: function(id) {
+		return jQuery.inArray(id, players);
+	},
+	launchFullScreen: function (element) {
+		if(element.requestFullScreen) {
+			element.requestFullScreen();
+		} else if(element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		} else if(element.webkitRequestFullScreen) {
+			element.webkitRequestFullScreen();
+		}
 	}
 }
 
@@ -25,14 +41,8 @@ window.onload = function() {
 
 	$('#fullscreen').on('click', function(e) {
 		e.preventDefault();
-		launchFullScreen(document.documentElement);
+		Board.launchFullScreen(document.documentElement);
 	});
-
-	// Options/Settings
-	var opt = {
-		width: 700,
-		height: 400
-	};
 
 	// Make game board!
 	Crafty.init(opt.width, opt.height);
@@ -119,14 +129,20 @@ window.onload = function() {
 			this.move(e.dir, e.distance);
 		});
 
-		paddleRight.bind("move", function() {
+		paddleRight.bind("move", function(e) {
 			console.log('right move', e);
 			this.move(e.dir, e.distance);
 		});
 
-		socket.on('move', function (e) {
-			console.log('Move event from socket!', e);
-			paddleLeft.trigger("move", { distance: 15, dir: e.dir });
+		socket.on('move', function (data) {
+			var player = Board.resolvePlayer(data.id);
+			console.log('Move event from socket!', data);
+
+			if (player === 0) {
+				paddleLeft.trigger("move", { distance: 15, dir: data.dir });
+			} else if (player === 1) {
+				paddleRight.trigger("move", { distance: 15, dir: data.dir });
+			};
 		});
 
 
