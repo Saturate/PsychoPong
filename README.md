@@ -9,11 +9,8 @@ Type `npm install` in the project folder and you will get all dependencies.
 ## Run
 CD to the path and type type `node server`.
 
-## TODO
-- [ ] Move game logic to Node Server, and only send display data to the board.
-- [ ] Add background music (Find someone that would like their music in the game)
-- [ ] Add sounds
-- [ ] Add title scene grapics @emiljensen
+## TODO/Tasks
+You can find these under [Issues](https://github.com/Saturate/PsychoPong/issues).
 
 ## Credits
 - [Allan Kimmer Jensen](https://github.com/Saturate/)
