@@ -39,4 +39,8 @@ var controller = io
       board.emit('move', { id: socket.id, dir: data.dir });
       console.log('Player 1, move: ' + data.dir);
     });
+
+    socket.on('disconnect', function (socket) {
+        console.log('Controller Disconnected:', socket);
+    });
   });
